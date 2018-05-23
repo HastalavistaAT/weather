@@ -1,0 +1,75 @@
+<script type="text/javascript" src="moment-with-locales.min.js"></script> 
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.2/Chart.min.js"></script> 
+<canvas id="canvas" width="400" height="250"></canvas>
+<script>
+
+var color = Chart.helpers.color;
+window.onload = function() {
+	var config = {
+		type: 'line',
+		data: {
+			datasets: []
+		},
+		options: {
+			responsive: true,
+			scales: {
+				xAxes: [{
+					type: "time",
+					display: true,
+					scaleLabel: {
+						display: true,
+						labelString: 'Date'
+					},
+					ticks: {
+						major: {
+							fontStyle: "bold",
+							fontColor: "#FF0000"
+						}
+					},
+					time: {
+						displayFormats: {
+							hour: 'YYYY-MM-DD HH:mm'
+						}
+					}
+				}]
+			}
+		}
+	};	
+	var filename = ["dataCA.dat", "dataCG.dat", "dataCD.dat", "dataHA.dat", "dataHG.dat", "dataHD.dat"];
+	var title = ["Temperatur Aussen", "Temperatur Gang EG", "Temperatur Dachboden", "Luftfeuchte Aussen", "Luftfeuchte Gang EG", "Luftfeuchte Dachboden"];
+	var colors = ["#CC0800", "#FFB500", "#6F007F", "#00367F", "#00C2FF", "#00CC82"];
+	Promise.all(filename.map(name => fetch(name))).then(responses => 
+		Promise.all(responses.map(res => res.text())
+	).then(texts => {
+			var objects = [];
+			for(var i = 0; i < texts.length; i++) {
+				objects[i] = eval(texts[i]);
+				config.data.datasets.push( {
+					label: title[i],
+					backgroundColor: color(colors[i]).alpha(0.5).rgbString(),
+					borderColor: color(colors[i]).rgbString(),
+					fill: false,
+					data: objects[i]
+				});
+			}
+	//.then(function(response) { return response.text() })
+	//		.then(function(text) { return eval(text) })
+	//		.then(function(json) {
+	//			config.data.datasets.push( {
+	//				label: filename,
+	//				backgroundColor: color("red").alpha(0.5).rgbString(),
+	//				borderColor: color("red").rgbString(),
+	//				fill: false,
+	//				data: json
+	//			});
+	//			return config;
+	//		})
+	//		.then(function(config) {
+			
+				var ctx = document.getElementById("canvas").getContext("2d");
+					window.myLine = new Chart(ctx, config);
+	//		})
+	}));  	
+};
+</script>
+	
