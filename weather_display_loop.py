@@ -80,7 +80,9 @@ def main(argv):
         draw.rectangle((125, 210, 200, 110), outline=(18,191,0), fill=(18,191,0))
         draw.rectangle((125, 100, 200, 0), outline=(0,191,185), fill=(0,191,185))
         draw.rectangle((200, 0, 260, 320), outline=(0,0,0), fill=(0,0,0))
-
+        draw.polygon([(226, 292), (226, 308), (215,300)], outline=(0,255,0), fill=(0,255,0))
+        draw.polygon([(215, 72), (215, 88), (226,80)], outline=(255,0,0), fill=(255,0,0))
+        
         # Draw a white X.
         #draw.line((10, 170, 110, 230), fill=(255,255,255))
         #draw.line((10, 230, 110, 170), fill=(255,255,255))
@@ -122,10 +124,16 @@ def main(argv):
         datalines = data.readlines()
         
         font = ImageFont.truetype('/home/pi/weather/arial.ttf', 20)
-        text =  "Auf: " + datalines[0][:-4] + "     " + time.strftime("%H:%M") +  "     Ab: " + datalines[1][:-4]
-        draw_rotated_text(disp.buffer, text, (210, 15), 90, font, fill=(255, 255, 255)) 
+        uptext = datalines[0][:-4]
+        downtext = datalines[1][:-4]
+        timetext = time.strftime("%H:%M")
+        #text =  "Auf: " + datalines[0][:-4] + "     " + time.strftime("%H:%M") +  "     Ab: " + datalines[1][:-4]
+        draw_rotated_text(disp.buffer, downtext, (210, 15), 90, font, fill=(255, 255, 255)) 
+        draw_rotated_text(disp.buffer, uptext, (210, 230), 90, font, fill=(255, 255, 255)) 
+        font = ImageFont.truetype('/home/pi/weather/arial.ttf', 28)
+        draw_rotated_text(disp.buffer, timetext, (205, 123), 90, font, fill=(255, 255, 255)) 
         #draw_rotated_text(disp.buffer, 'This is a line of text.', (170, 90), 90, font, fill=(255,255,255))
-        data.close() 
+        data.close()
         # Write buffer to display hardware, must be called to make things visible on the
         # display!
         disp.display()
