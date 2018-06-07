@@ -59,7 +59,20 @@ def main():
             mariadb_connection.commit()
             call = 'python /home/pi/weather/weather_display.py -a ' + str(taussen) + ' -g ' + '{0:0.1f}'.format(tgang) + ' -d ' + str(tdachboden) + ' -A ' + str(haussen) + '% -G ' + '{0:0.0f}'.format(hgang) + '% -D ' +str(hdachboden) + '%'
             print call
-            os.system(call)
+            file = open("/home/pi/weather/display_call","w")
+            file.write(call)
+            file.close()
+            values = open("/home/pi/weather/temp","w")
+
+            values.write(str(tdachboden) + "\n")
+            values.write('{0:0.1f}'.format(tgang) + "\n")
+            values.write(str(taussen) + "\n")
+            values.write(str(hdachboden) + "%\n")
+            values.write('{0:0.0f}'.format(hgang) + "%\n")
+            values.write(str(haussen) + "%\n")
+            
+            values.close()
+            #os.system(call)
             sys.exit(1)
 if __name__ == '__main__':
     main()

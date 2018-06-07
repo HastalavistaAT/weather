@@ -1,3 +1,4 @@
+#!/usr/bin/python
 # -*- coding: utf-8 -*-
 import Image
 import ImageDraw
@@ -77,12 +78,12 @@ def main(argv):
     #draw.ellipse((10, 10, 110, 80), outline=(0,255,0), fill=(0,0,255))
 
     # Draw a purple rectangle with yellow outline.
-    draw.rectangle((0, 320, 115, 220), outline=(255,213,0), fill=(255,213,0))
-    draw.rectangle((0, 210, 115, 110), outline=(24,255,0), fill=(24,255,0))
-    draw.rectangle((0, 100, 115, 0), outline=(0,255,247), fill=(0,255,247))
-    draw.rectangle((125, 320, 240, 220), outline=(191,160,0), fill=(191,160,0))
-    draw.rectangle((125, 210, 240, 110), outline=(18,191,0), fill=(18,191,0))
-    draw.rectangle((125, 100, 240, 0), outline=(0,191,185), fill=(0,191,185))
+    draw.rectangle((40, 320, 115, 220), outline=(255,213,0), fill=(255,213,0))
+    draw.rectangle((40, 210, 115, 110), outline=(24,255,0), fill=(24,255,0))
+    draw.rectangle((40, 100, 115, 0), outline=(0,255,247), fill=(0,255,247))
+    draw.rectangle((125, 320, 200, 220), outline=(191,160,0), fill=(191,160,0))
+    draw.rectangle((125, 210, 200, 110), outline=(18,191,0), fill=(18,191,0))
+    draw.rectangle((125, 100, 200, 0), outline=(0,191,185), fill=(0,191,185))
 
     # Draw a white X.
     #draw.line((10, 170, 110, 230), fill=(255,255,255))
@@ -116,20 +117,20 @@ def main(argv):
 
     # Write two lines of white text on the buffer, rotated 90 degrees counter clockwise.
     font = ImageFont.truetype('/home/pi/weather/monofonto.ttf', 36)
-    draw_rotated_text(disp.buffer, tdachboden, (15, 10), 90, font, fill=(0,0,0))
-    draw_rotated_text(disp.buffer, tgang, (15, 120), 90, font, fill=(0,0,0))
-    draw_rotated_text(disp.buffer, taussen, (15, 230), 90, font, fill=(0,0,0))
+    draw_rotated_text(disp.buffer, tdachboden, (55, 10), 90, font, fill=(0,0,0))
+    draw_rotated_text(disp.buffer, tgang, (55, 120), 90, font, fill=(0,0,0))
+    draw_rotated_text(disp.buffer, taussen, (55, 230), 90, font, fill=(0,0,0))
     draw_rotated_text(disp.buffer, hdachboden, (140, 10), 90, font, fill=(0,0,0))
     draw_rotated_text(disp.buffer, hgang, (140, 120), 90, font, fill=(0,0,0))
     draw_rotated_text(disp.buffer, haussen, (140, 230), 90, font, fill=(0,0,0))
 
-    font = ImageFont.truetype('/home/pi/weather/Quadrit.ttf', 12)
-    draw_rotated_text(disp.buffer, 'Temperatur\nDachboden', (70, 10), 90, font, fill=(0,0,0))
-    draw_rotated_text(disp.buffer, 'Temperatur\nGang EG', (70, 120), 90, font, fill=(0,0,0))
-    draw_rotated_text(disp.buffer, 'Temperatur\nAussen', (70, 230), 90, font, fill=(0,0,0))
-    draw_rotated_text(disp.buffer, 'Luftfeuchte\nDachboden', (195, 10), 90, font, fill=(0,0,0))
-    draw_rotated_text(disp.buffer, 'Luftfeuchte\nGang EG', (195, 120), 90, font, fill=(0,0,0))
-    draw_rotated_text(disp.buffer, 'Luftfeuchte\nAussen', (195, 230), 90, font, fill=(0,0,0))
+    font = ImageFont.truetype('/home/pi/weather/Quadrit.ttf', 14)
+    draw_rotated_text(disp.buffer, 'Dachboden', (0, 7), 90, font, fill=(255,255,255))
+    draw_rotated_text(disp.buffer, 'Wohnraum', (0, 118), 90, font, fill=(255,255,255))
+    draw_rotated_text(disp.buffer, 'Vorgarten', (0, 230), 90, font, fill=(255,255,255))
+    #draw_rotated_text(disp.buffer, 'Luftfeuchte\nDachboden', (195, 10), 90, font, fill=(0,0,0))
+    #draw_rotated_text(disp.buffer, 'Luftfeuchte\nGang EG', (195, 120), 90, font, fill=(0,0,0))
+    #draw_rotated_text(disp.buffer, 'Luftfeuchte\nAussen', (195, 230), 90, font, fill=(0,0,0))
 
 
     #draw_rotated_text(disp.buffer, 'This is a line of text.', (170, 90), 90, font, fill=(255,255,255))

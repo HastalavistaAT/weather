@@ -1,0 +1,1 @@
+python /home/pi/weather/weather_display.py -a 21.2 -g 24.5 -d 24.9 -A 72% -G 55% -D 58%
