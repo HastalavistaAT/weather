@@ -115,7 +115,7 @@ def main(argv):
         font = ImageFont.truetype('/home/pi/weather/Quadrit.ttf', 14)
         draw_rotated_text(disp.buffer, 'Dachboden', (0, 7), 90, font, fill=(255,255,255))
         draw_rotated_text(disp.buffer, 'Wohnraum', (0, 118), 90, font, fill=(255,255,255))
-        draw_rotated_text(disp.buffer, 'Vorgarten', (0, 230), 90, font, fill=(255,255,255))
+        draw_rotated_text(disp.buffer, 'Garten', (0, 247), 90, font, fill=(255,255,255))
         #draw_rotated_text(disp.buffer, 'Luftfeuchte\nDachboden', (195, 10), 90, font, fill=(0,0,0))
         #draw_rotated_text(disp.buffer, 'Luftfeuchte\nGang EG', (195, 120), 90, font, fill=(0,0,0))
         #draw_rotated_text(disp.buffer, 'Luftfeuchte\nAussen', (195, 230), 90, font, fill=(0,0,0))

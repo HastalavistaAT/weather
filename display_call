@@ -1,1 +1,1 @@
-python /home/pi/weather/weather_display.py -a 20.6 -g 24.7 -d ??.? -A 75% -G 55% -D ??%%
+python /home/pi/weather/weather_display.py -a 20.3 -g 22.8 -d 22.6 -A 42% -G 33% -D 38%
